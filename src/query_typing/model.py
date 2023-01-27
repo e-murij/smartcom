@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-
+from typing import TypeVar
 from query_typing.model_base import ModelBase, QueryBase
 
 
@@ -9,7 +9,10 @@ class EmployeeModel(ModelBase):
     name: str
 
 
-class EmployeeQuery(QueryBase):
+E = TypeVar("E", bound=EmployeeModel)
+
+
+class EmployeeQuery(QueryBase[E]):
     pass
 
 
@@ -19,5 +22,8 @@ class DepartmentModel(ModelBase):
     name: str
 
 
-class DepartmentQuery(QueryBase):
+D = TypeVar("D", bound=DepartmentModel)
+
+
+class DepartmentQuery(QueryBase[D]):
     pass
